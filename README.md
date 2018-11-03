@@ -61,11 +61,11 @@ I am also using an email sender functionality based on nodemailer. I selected no
 I setup an gmail test account to send the emails, consequently the from email is the one i setup.  However, if we would have a mailchimp or AWS SMTP or other the from email could be changed also. 
 
 
-TODO
+Possible improvements
 ---------------
 - possible to create email templates, those case be made using handelbars with placeholders to allow easy usage of them. this would make easier to send updates (standard messages)
 
-- 
+- Using AWS Lambda to run every X amount of time (for instance 1 minute) to check if there is any email that was not processed in case of error for instance. and retry to send it. 
 
 Sample of usage
 ----------------
