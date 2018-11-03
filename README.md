@@ -6,8 +6,8 @@ DEVELOPMENT ENVIRONMENT SETUP
 
 You need to have 
 
-**NodeJS  :**
-**MongoDB :**  
+*NodeJS 
+*MongoDB 
 
 
 SETUP
