@@ -1,5 +1,5 @@
 var express = require('express');
-var controller = require('../controllers/api/emails');
+var controller = require('../controllers/api/notifications');
 var router = express.Router();
 var isAuthenticated = require('../middleware/isAuthenticated');
 

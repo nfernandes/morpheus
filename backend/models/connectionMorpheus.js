@@ -32,4 +32,4 @@ process.on('SIGINT', function() {
     });
 });
 
-require('./emailQueue');
+require('./notificationQueue');

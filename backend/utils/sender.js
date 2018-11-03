@@ -3,11 +3,12 @@
 var config = require('../config'),
     _ = require('lodash'),
     nodemailer = require('nodemailer'),
-    EmailQueue = require("../models/connectionMorpheus").model('emailQueue'),
+    notificationQueue = require("../models/connectionMorpheus").model('notificationQueue'),
     jwt = require('jsonwebtoken'),
     request = require('request'),
     http = require("http"),
-    https = require("https");
+    https = require("https"),
+    puretext = require('puretext');
 
 
 var exports = module.exports = {
@@ -27,7 +28,7 @@ var exports = module.exports = {
             var smtpTransport = nodemailer.createTransport(configTransporter);
 
             var mailOptions = {
-                from: emailToSend.from,
+                from: emailToSend.from ? emailToSend.from : config.email.defaultFrom,
                 to: emailToSend.to,
                 subject: emailToSend.subject,
                 text: emailToSend.text,
@@ -51,5 +52,25 @@ var exports = module.exports = {
         });
 
 
+    },
+    sendSMS: function(messageToSend) {
+        return new Promise(function(resolve, reject) {
+            var text = {
+                toNumber: messageToSend.toNumber,
+                fromNumber: config.sms.defaultFromNumber,
+                smsBody: messageToSend.text,
+                apiToken: config.sms.token
+            };
+
+            puretext.send(text, function(err, response) {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    console.log(response);
+                    resolve();
+                }
+            })
+        });
     }
 }

@@ -19,12 +19,17 @@ module.exports = {
                 user: 'AKIAJVZCJHKHDWKTJSLA',
                 pass: 'AmAdmXxlZ9xgSEZL7Nq7mH3HPJlI4NScv0OiTno9WMko'
             }
-        }
+        },
+        defaultFrom: "nadia.fernandess@gmail.com"
     },
     jwt: {
         secret: '91a2a6e376eb7788fd9047b203dc69996043e6916f35a6b4e77ba8b5be0763c1'
     },
     session: {
         secret: 'leosarethebest'
+    },
+    sms: {
+        token: 'a18sov',
+        defaultFromNumber: '+31649306519'
     }
 }

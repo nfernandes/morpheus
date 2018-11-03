@@ -29,27 +29,29 @@ Project structure
 ---------------
 index.js that contains the server that will kick start the project, after we have the following structure:
 
-**configurations**
+**Configurations**
 
 Environment configurations allowing to use specific variables depending on the project environment at the time.
 In AWS we would set up the correct node.process.env indicating which env file to use (i would have one for test, stage, prod).
 
-**controllers**
+**Controllers**
 
-Contain the api functionalities for the routes defined.
+Contain the api functionalities for the routes defined. I added functionality to send emails/text message. However, i only activated send emails.
+you can see the function to send also sms. 
 
-**middleware**
+**Middleware**
+
 Middleware with authentication (checking if authentication is valid). In this case we can for instance use Json Web Token, because this updates could be use between systems so would be a secure and easy way to make authentication between systems.
 
-**modules**
+**Modules**
 
 Mongodb modules used, in this case emails. The email module is already prepared to do pagination to have attachment etc. 
 
-**routes**
+**Routes**
 
-The api paths defined for the project.
+The api paths defined for the project. 
 
-**utils**
+**Utils**
 
 Extra functionalities that we can use as helpers for the controllers and that can be use in several controllers. 
 In this case, i am using a template for the responses, to guarantee that we send always the same type of structure in the response. Allows easier collaboration with other systems. 
@@ -68,7 +70,7 @@ Sample of usage
 
 **Create update message**
 
-POST http://localhost:3000/api/emails
+POST http://localhost:3000/api/notifications
 
 BODY :
 
@@ -116,7 +118,7 @@ Response Sample
 
 **Get emails sent to a person**
 
-GET http://localhost:3000/api/emails?to=emailto
+GET http://localhost:3000/api/notifications?to=emailto
 
 Response Sample
 

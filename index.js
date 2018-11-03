@@ -11,9 +11,6 @@ var mongoose = require('mongoose');
 var path = require('path');
 var config = require("./backend/config");
 
-// trying AWS-X-RAY
-//var AWSXRay = require('aws-xray-sdk');
-
 /*---------------------- APP INCLUDES --------------------- */
 var db = require('./backend/models/connectionMorpheus');
 var querystring = require('querystring');

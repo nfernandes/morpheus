@@ -12,7 +12,7 @@ router.get('/testing', function(req, res) {
 
 
 /**************************** MANAGE ****************************************/
-router.use('/api/emails', require('./emails'));
+router.use('/api/notifications', require('./notifications'));
 
 /********************* MONITORING *************************/
 
