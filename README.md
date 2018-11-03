@@ -71,6 +71,8 @@ Sample of usage
 POST http://localhost:3000/api/emails
 
 BODY :
+
+~~~~
 {
   "from": "email@itpx.one",
   "to": "emailto@gmail.com",
@@ -78,9 +80,11 @@ BODY :
   "html": "<html><head></head><body>update message</body></html>",
   "subject":"update title"
 }
+~~~~
 
 Response Sample
 
+~~~~
 {
     "data": {
         "to": [
@@ -107,6 +111,7 @@ Response Sample
     "status": null,
     "error": null
 }
+~~~~
 
 
 **Get emails sent to a person**
@@ -115,6 +120,7 @@ GET http://localhost:3000/api/emails?to=emailto
 
 Response Sample
 
+~~~~
 {
     "data": [
         {
@@ -181,3 +187,4 @@ Response Sample
     "status": null,
     "error": null
 }
+~~~~
