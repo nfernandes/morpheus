@@ -3,24 +3,12 @@
 var config = require('../config'),
     _ = require('lodash'),
     nodemailer = require('nodemailer'),
-    EmailQueue = require("../models/connectionMorpheus").model('emailQueue');
+    EmailQueue = require("../models/connectionMorpheus").model('emailQueue'),
+    jwt = require('jsonwebtoken'),
+    request = require('request'),
+    http = require("http"),
+    https = require("https");
 
-var jwt = require('jsonwebtoken');
-var request = require('request');
-var http = require("http");
-var https = require("https");
-
-function createJWT() {
-    try {
-        return jwt.sign({
-                client: "mercuryClient"
-            },
-            config.jwt.secret);
-    } catch (e) {
-        log.info("notification-jwt" + e);
-        return "";
-    }
-}
 
 var exports = module.exports = {
     sendWithNodemailer: function(emailToSend) {
@@ -30,39 +18,30 @@ var exports = module.exports = {
                 host: config.email.nodemailer.host,
                 port: config.email.nodemailer.port,
                 auth: {
-                    user: config.email.nodemailer.user,
-                    pass: config.email.nodemailer.password,
+                    user: config.email.nodemailer.auth.user,
+                    pass: config.email.nodemailer.auth.pass,
                 },
                 logger: true
             };
 
             var smtpTransport = nodemailer.createTransport(configTransporter);
-            var fromEmail = emailToSend.from;
-
-            log.info("sendWithNodemailer" + JSON.stringify({
-                from: fromEmail,
-                to: emailToSend.toEmails,
-                cc: emailToSend.ccEmails,
-                bcc: emailToSend.bccEmails
-            }));
 
             var mailOptions = {
-                from: fromEmail,
-                to: emailToSend.toEmails,
-                cc: emailToSend.ccEmails,
-                bcc: emailToSend.bccEmails,
-                replyTo: emailToSend.replyToEmails,
-                subject: emailToSend.notification.subject.replace("/n", ""),
-                text: emailToSend.notification.text,
-                html: emailToSend.notification.html
+                from: emailToSend.from,
+                to: emailToSend.to,
+                subject: emailToSend.subject,
+                text: emailToSend.text,
+                html: emailToSend.html
             };
+            console.log(mailOptions);
 
             smtpTransport.sendMail(mailOptions, function(err) {
                 if (err) {
-                    log.error("sendWithNodemailer err " + err);
+                    console.log("sendWithNodemailer err " + err);
                     reject(err);
                 } else {
                     smtpTransport.close();
+                    console.log("email sent")
                     resolve(emailToSend);
                 }
             });

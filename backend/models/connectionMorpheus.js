@@ -8,7 +8,7 @@ module.exports = connectionDB = mongoose.createConnection(mongoURI);
 
 connectionDB.on('connected', function() {
     contingError = 0;
-    console.log('Mongoose connected to connection mercury');
+    console.log('Mongoose connected to connection Morpheus');
 });
 
 // If the connection throws an error

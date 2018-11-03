@@ -28,6 +28,7 @@ var emailQueueSchema = mongoose.Schema({
 }, { timestamps: true });
 
 
+//we can have retry/send again functionality 
 emailQueueSchema.methods.updatelastEmailAtempt = function() {
     var currentDate = new Date();
     this.firstAtempt = currentDate;
