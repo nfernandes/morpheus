@@ -33,6 +33,7 @@ index.js that contains the server that will kick start the project, after we hav
 
 Environment configurations allowing to use specific variables depending on the project environment at the time.
 In AWS we would set up the correct node.process.env indicating which env file to use (i would have one for test, stage, prod).
+In this case i am allowing my dev config file to be public. In a real project the repository would be private or i would not commit the env files. 
 
 **Controllers**
 
