@@ -2,14 +2,13 @@
 
 var mongoose = require('mongoose');
 var config = require("../../config");
-var validator = require('../../utils/validator.js');
 var Email = require("../../models/connectionMorpheus.js").model('emailQueue');
 var response = require('../../utils/response.js');
-var utils = require('../../utils/resultsFormatter.js');
 var sender = require("../../utils/sender.js");
 var _ = require('lodash');
 var mercuryJWT = require("../../utils/jwt.js");
 var _ = require("lodash");
+var validator = require('validator');
 
 function list(req, res) {
     var query = { isDeleted: { $ne: true } };
@@ -50,15 +49,14 @@ function list(req, res) {
 
     //count bases in query filter also
     Email.count(query, function(err1, nr) {
-        if (err1) return validator.error(req, res, err1, 'read');
+        if (err1) return response.sendError(res, 400, "invalid data");
 
         if (!req.query.limit) options.limit = nr;
         Email.paginate(query, options, function(err, email) {
-            if (err) return validator.error(req, res, err, 'read-paginate');
+            if (err) return response.sendError(res, 400, "invalid data");
 
             if (email) {
-                email = utils.email.formatGroup(email.docs);
-                response.sendData(res, email, { list: true, size: nr });
+                response.sendData(res, email.docs, { list: true, size: nr });
             } else
                 return response.sendData(res, [], {}, 'no email');
         });
@@ -69,7 +67,7 @@ function details(req, res) {
     Email.findById(req.params.emailid, function(err, email) {
         var domain = mercuryJWT.decode(req).domain;
 
-        if (err) return validator.error(req, res, err, 'read');
+        if (err) return response.sendError(res, 404, "data not found");
         if (!email) return response.sendData(res, [], {}, 'no email');
         return response.sendData(res, email, {});
 
@@ -107,7 +105,7 @@ function create(req, res) {
             to: req.body.to ? validateEmail(req.body.to) : [],
             cc: req.body.cc ? validateEmail(req.body.cc) : [],
             bcc: req.body.bcc ? validateEmail(req.body.bcc) : [],
-            replyto: validator.validate(req.body.replyto, 'email'),
+            replyto: validateEmail(req.body.replyto, 'email'),
             attachment: req.body.attachment,
             attachmentFileName: req.body.attachmentFileName
         }
@@ -132,10 +130,13 @@ function create(req, res) {
     }
 }
 
-
-
-
-
+function checkEmail(email) {
+    var newEmail = validator.trim(email);
+    if (validator.isEmail(newEmail, { allow_display_name: true }))
+        return newEmail;
+    else
+        return null;
+}
 
 module.exports = {
     list: list,

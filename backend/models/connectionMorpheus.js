@@ -32,5 +32,4 @@ process.on('SIGINT', function() {
     });
 });
 
-require('./template');
 require('./emailQueue');

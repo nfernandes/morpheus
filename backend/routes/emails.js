@@ -7,11 +7,11 @@ var isAuthenticated = require('../middleware/isAuthenticated');
 /***************** READ ROUTES ******************************/
 
 router.route('/')
-    .get(isAuthenticated, controller.list)
-    .post(isAuthenticated, controller.create);
+    .get( /*isAuthenticated*/ controller.list)
+    .post( /*isAuthenticated,*/ controller.create);
 
 router.route('/:emailid')
-    .get(isAuthenticated, controller.details);
+    .get( /*isAuthenticated,*/ controller.details);
 
 /***************** EXPORT ********************************/
 module.exports = router;

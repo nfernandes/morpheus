@@ -15,14 +15,13 @@ var config = require("./backend/config");
 //var AWSXRay = require('aws-xray-sdk');
 
 /*---------------------- APP INCLUDES --------------------- */
-var db = require('../models/connectionMorpheus');
-var config = require('../config');
+var db = require('./backend/models/connectionMorpheus');
 var querystring = require('querystring');
-var routes = require('../routes');
+var routes = require('./backend/routes');
 
 /*---------------------- INITIALIZE APP --------------------- */
 var app = express();
-log.info('Bootstrapping Morpheus');
+console.log('Bootstrapping Morpheus');
 
 
 /*---------------------- AWS X-RAY ------------- */

@@ -22,7 +22,9 @@ module.exports = {
         }
     },
     jwt: {
-        expiresIn: 2592000,
         secret: '91a2a6e376eb7788fd9047b203dc69996043e6916f35a6b4e77ba8b5be0763c1'
+    },
+    session: {
+        secret: 'leosarethebest'
     }
 }

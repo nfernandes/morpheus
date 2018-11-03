@@ -3,7 +3,7 @@
 var config = require('../config'),
     _ = require('lodash'),
     nodemailer = require('nodemailer'),
-    EmailQueue = require("../models/connectionMercury").model('emailQueue');
+    EmailQueue = require("../models/connectionMorpheus").model('emailQueue');
 
 var jwt = require('jsonwebtoken');
 var request = require('request');
