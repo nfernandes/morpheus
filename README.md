@@ -16,7 +16,7 @@ SETUP
 
 Create a directory `morpheus` and run the following command:
 
-`git clone https://itpx.githost.io/amber/mercury.git`
+`git clone https://github.com/nfernandes/morpheus.git`
 
 `npm install`
 
