@@ -16,19 +16,18 @@ var exports = module.exports = {
         return new Promise(function(resolve, reject) {
 
             var configTransporter = {
-                host: config.email.nodemailer.host,
-                port: config.email.nodemailer.port,
+                service: config.email.nodemailer.type,
                 auth: {
                     user: config.email.nodemailer.auth.user,
                     pass: config.email.nodemailer.auth.pass,
-                },
-                logger: true
+                }
             };
+            console.log(configTransporter)
 
             var smtpTransport = nodemailer.createTransport(configTransporter);
 
             var mailOptions = {
-                from: emailToSend.from ? emailToSend.from : config.email.defaultFrom,
+                from: emailToSend.from,
                 to: emailToSend.to,
                 subject: emailToSend.subject,
                 text: emailToSend.text,
@@ -47,7 +46,7 @@ var exports = module.exports = {
                 }
             });
         }).catch(function(err) {
-            log.error("sendWithNodemailer err " + err);
+            console.log("sendWithNodemailer err " + err);
             reject(err)
         });
 

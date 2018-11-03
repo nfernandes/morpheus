@@ -57,6 +57,8 @@ Extra functionalities that we can use as helpers for the controllers and that ca
 In this case, i am using a template for the responses, to guarantee that we send always the same type of structure in the response. Allows easier collaboration with other systems. 
 I am also using an email sender functionality based on nodemailer. I selected nodemailer because it is a reliable service easy to use and to set up.
 
+I setup an gmail test account to send the emails, consequently the from email is the one i setup.  However, if we would have a mailchimp or AWS SMTP or other the from email could be changed also. 
+
 
 TODO
 ---------------
@@ -98,7 +100,7 @@ Response Sample
         "attachmentFileName": [],
         "isBounced": false,
         "_id": "5bdda9594a8880ddf4fad26d",
-        "from": "nadia@itpx.one",
+        "from": "emailfrom@gmail.one",
         "subject": "update title",
         "text": "update message",
         "html": "<html><head></head><body>update message</body></html>",
@@ -135,7 +137,7 @@ Response Sample
             "attachmentFileName": [],
             "isBounced": false,
             "_id": "5bdda9994a8880ddf4fad26e",
-            "from": "nadia@itpx.one",
+            "from": "emailfrom@gmail.one",
             "subject": "update title",
             "text": "update message",
             "html": "<html><head></head><body>update message</body></html>",
@@ -154,7 +156,7 @@ Response Sample
             "attachmentFileName": [],
             "isBounced": false,
             "_id": "5bdda9594a8880ddf4fad26d",
-            "from": "nadia@itpx.one",
+            "from": "emailfrom@gmail.one",
             "subject": "update title",
             "text": "update message",
             "html": "<html><head></head><body>update message</body></html>",

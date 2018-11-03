@@ -22,11 +22,11 @@ function list(req, res) {
     console.log("query " + JSON.stringify(query));
 
     //count bases in query filter also
-    Notifications.count(query, function(err1, nr) {
+    Notification.count(query, function(err1, nr) {
         if (err1) return response.sendError(res, 400, "invalid data");
 
         if (!req.query.limit) options.limit = nr;
-        Notifications.paginate(query, options, function(err, notification) {
+        Notification.paginate(query, options, function(err, notification) {
             if (err) return response.sendError(res, 400, "invalid data");
 
             if (notification) {
@@ -34,16 +34,6 @@ function list(req, res) {
             } else
                 return response.sendData(res, [], {}, 'no notification');
         });
-    });
-}
-
-function details(req, res) {
-    console.log(req.params.to);
-    Notifications.find({ to: req.params.to }, function(err, notifications) {
-        if (err) return response.sendError(res, 404, "data not found");
-        if (!notifications.length) return response.sendData(res, [], {}, 'no notifications');
-        return response.sendData(res, notifications, {});
-
     });
 }
 
@@ -73,7 +63,7 @@ function validateEmail(emails) {
 
 function create(req, res) {
     var notification = new Notification();
-    notification.from = req.body.from; //? validateEmail(req.body.from) : null,
+    notification.from = config.email.defaultFrom;
     notification.subject = req.body.subject;
     notification.text = req.body.text;
     notification.html = req.body.html;

@@ -14,13 +14,17 @@ module.exports = {
     },
     email: {
         nodemailer: {
-            host: 'email-smtp.us-east-1.amazonaws.com',
+            type: "gmail",
             auth: {
-                user: 'AKIAJVZCJHKHDWKTJSLA',
-                pass: 'AmAdmXxlZ9xgSEZL7Nq7mH3HPJlI4NScv0OiTno9WMko'
+                user: "morpheusinterview@gmail.com",
+                pass: "!testaccount2018!AB"
             }
         },
-        defaultFrom: "email@gmail.com"
+        mailchimp: {
+            password: '!testaccount2018!AB'
+        },
+        defaultFrom: "morpheusinterview@gmail.com",
+
     },
     jwt: {
         secret: '91a2a6e376eb7788fd9047b203dc69996043e6916f35a6b4e77ba8b5be0763c1'
