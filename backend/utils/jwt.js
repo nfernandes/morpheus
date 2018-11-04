@@ -3,8 +3,6 @@
 var jwt = require('jsonwebtoken');
 var config = require('../config');
 var Promise = require("bluebird");
-var validator = require('./validator');
-var logger = require('../utils/logger').log;
 var response = require("../utils/response");
 
 module.exports = {
@@ -19,14 +17,14 @@ module.exports = {
             try {
                 decoded = jwt.verify(req.accessToken, config.jwt.secret);
             } catch (err) {
-                logger.error("jwt-err", err);
+                console.log("jwt-err", err);
                 return response.sendError(res, 401);
             }
             //req.role = decoded.role; //todo put this in the token
             return decoded;
 
         } catch (err) { 
-            logger.error("jwt-err", err);
+            console.log("jwt-err", err);
             return;
         }
     }

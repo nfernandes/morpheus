@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var connectionAmber = require('./connectionMorpheus.js');
 
-var emailQueueSchema = mongoose.Schema({
+var notificationQueueSchema = mongoose.Schema({
     from: String,
     to: [String],
     replyto: String,
@@ -16,6 +16,8 @@ var emailQueueSchema = mongoose.Schema({
     text: String,
     html: String,
     created: String,
+    toNumber: String,
+    fromNumber: String,
     emailTemplate: String,
     attachment: [String],
     attachmentFileName: [String],
@@ -28,18 +30,19 @@ var emailQueueSchema = mongoose.Schema({
 }, { timestamps: true });
 
 
-emailQueueSchema.methods.updatelastEmailAtempt = function() {
+//we can have retry/send again functionality 
+notificationQueueSchema.methods.updatelastEmailAtempt = function() {
     var currentDate = new Date();
     this.firstAtempt = currentDate;
     this.save();
 }
 
-emailQueueSchema.methods.updatefirstEmailAtempt = function() {
+notificationQueueSchema.methods.updatefirstEmailAtempt = function() {
     var currentDate = new Date();
     this.lastlogin = currentDate;
     this.save();
 }
 
-emailQueueSchema.plugin(mongoosePaginate);
-var emailQueue = connectionAmber.model('emailQueue', emailQueueSchema);
-module.exports = emailQueue;
+notificationQueueSchema.plugin(mongoosePaginate);
+var notificationQueue = connectionAmber.model('notificationQueue', notificationQueueSchema);
+module.exports = notificationQueue;

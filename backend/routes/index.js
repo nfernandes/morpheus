@@ -12,17 +12,8 @@ router.get('/testing', function(req, res) {
 
 
 /**************************** MANAGE ****************************************/
-router.use('/api/templates', require('./templates'));
-router.use('/api/generaltemplates', require('./generalTemplates'));
-router.use('/api/emails', require('./emails'));
-router.use('/api/emailogs', require('./emailLogs'));
-router.use('/api/smtps', require('./smtps'));
-router.use('/api/configurations', require('./configurations'));
-router.use('/api/preferences', require('./preferences'));
-router.use('/api/notifications', require('./notifications'));
-router.use('/api/newnotifications', require('./newnotifications'));
-router.use('/api/invitations', require('./invitations'));
-//router.use('/api/bouncedemails', require('./bouncedEmails'));
+router.use('/api/v1/notifications', require('./notifications'));
+router.use('/api/v2/notifications', require('./notificationsv2'));
 
 /********************* MONITORING *************************/
 
