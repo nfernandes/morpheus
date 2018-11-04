@@ -7,8 +7,8 @@ var isAuthenticated = require('../middleware/isAuthenticated');
 /***************** READ ROUTES ******************************/
 
 router.route('/')
-    .get(isAuthenticated, controller.list)
-    .post(isAuthenticated, controller.create);
+    .get( /*isAuthenticated*/ controller.list)
+    .post( /*isAuthenticated,*/ controller.create);
 
 /***************** EXPORT ********************************/
 module.exports = router;
