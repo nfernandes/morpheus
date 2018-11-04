@@ -10,6 +10,19 @@ var JWT = require("../../utils/jwt.js");
 var _ = require("lodash");
 var validator = require('validator');
 
+
+/**
+ * Create list of notifications
+ * 
+ * - all notifications
+ * - or specific one based on query parameters (to)
+ * 
+ * function also does pagination with a specific number of items per page
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+
 function list(req, res) {
     var query = {};
     var options = { sort: { 'createdAt': -1 } };
@@ -59,8 +72,14 @@ function validateEmail(emails) {
 
 }
 
-
-
+/**
+ * Create notifications email
+ * 
+ * function also does pagination with a specific number of items per page
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 function create(req, res) {
     var notification = new Notification();
     notification.from = config.email.defaultFrom;
@@ -68,6 +87,8 @@ function create(req, res) {
     notification.text = req.body.text;
     notification.html = req.body.html;
     notification.to = req.body.to;
+
+    //prepared to received sms data
     notification.toNumber = req.body.toNumber;
     notification.fromNumber = req.body.fromNumber;
 
@@ -89,23 +110,13 @@ function create(req, res) {
                 .catch(function(err) {
                     response.sendError(res, 400, 'Notification not sent' + err);
                 });
-            //code to send sms   
-            /*sender.sendSMS(notification)
-                .then(function(notification) {
-                    notification.isProcessed = true;
-                    notification.save(function(err, savedNotification) {
-                        response.sendData(res, savedNotification, { list: true });
-                    });
-                })
-                .catch(function(err) {
-                    response.sendError(res, 400, 'Notification not sent' + err);
-                });*/
-
         })
 
     }
 }
 
+//to check if the data passed is an email
+//not used on the moment to keep it simple
 function checkEmail(email) {
     var newEmail = validator.trim(email);
     if (validator.isEmail(newEmail, { allow_display_name: true }))

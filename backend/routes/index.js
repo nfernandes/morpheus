@@ -13,6 +13,7 @@ router.get('/testing', function(req, res) {
 
 /**************************** MANAGE ****************************************/
 router.use('/api/v1/notifications', require('./notifications'));
+router.use('/api/v2/notifications', require('./notificationsv2'));
 
 /********************* MONITORING *************************/
 
