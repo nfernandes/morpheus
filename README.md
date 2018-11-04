@@ -73,7 +73,11 @@ Sample of usage
 
 **Create update message**
 
-POST http://localhost:3000/api/notifications
+Design of request is using 'notifications', because can be use for emails or/and sms. I also used the version, because v1 is the original request and v2 will have an example of authentication.
+
+##### v1
+
+POST http://localhost:3000/api/v1/notifications
 
 BODY :
 
@@ -118,10 +122,17 @@ Response Sample
 }
 ~~~~
 
+##### v2
+
 
 **Get emails sent to a person**
 
-GET http://localhost:3000/api/notifications?to=emailto
+Design of request is using 'notifications' and 'to' in the query to obtain a specific user email, could also have done with name.
+I also used the version, because v1 is the original request and v2 will have an example of authentication.
+
+##### v1
+
+GET http://localhost:3000/api/v1/notifications?to=emailto
 
 Response Sample
 
@@ -193,3 +204,5 @@ Response Sample
     "error": null
 }
 ~~~~
+
+##### v2
