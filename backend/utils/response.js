@@ -1,3 +1,12 @@
+/**
+ * standardized responses for the apis
+ * 
+ * keeping the same structure in case of success and errors
+ * 
+ * in terms of error and status data.
+ * 
+ */
+
 var errors = require('../constants/errors');
 
 module.exports = {
@@ -5,7 +14,7 @@ module.exports = {
         res.send({
             data: data,
             flags: flags ? flags : {},
-            status: status ? status : null,
+            status: status ? status : 200,
             error: null
         });
     },

@@ -8,7 +8,6 @@ var sender = require("../../utils/sender.js");
 var _ = require('lodash');
 var JWT = require("../../utils/jwt.js");
 var _ = require("lodash");
-var validator = require('validator');
 
 
 /**
@@ -48,28 +47,6 @@ function list(req, res) {
                 return response.sendData(res, [], {}, 'no notification');
         });
     });
-}
-
-function validateEmail(emails) {
-    var validatedEmails = [];
-
-    if (emails instanceof Array) {
-        if (emails.length == 0) return [];
-        validatedEmails = emails;
-    } else {
-        validatedEmails = emails.split(',');
-    }
-
-    var isValid = true;
-    _.each(validatedEmails, function(e) {
-        if (!checkEmail(e, 'email'))
-            isValid = false;
-    });
-    if (!isValid)
-        return [];
-    else
-        return validatedEmails;
-
 }
 
 /**
@@ -113,16 +90,6 @@ function create(req, res) {
         })
 
     }
-}
-
-//to check if the data passed is an email
-//not used on the moment to keep it simple
-function checkEmail(email) {
-    var newEmail = validator.trim(email);
-    if (validator.isEmail(newEmail, { allow_display_name: true }))
-        return newEmail;
-    else
-        return null;
 }
 
 module.exports = {

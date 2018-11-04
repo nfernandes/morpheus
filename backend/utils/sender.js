@@ -1,13 +1,17 @@
+/**
+ * Sender functionalities
+ * 
+ * send emails using nodemailer and sending sms.
+ * Functionalities defined has promised so that we can send the user or system that use it,
+ * a synchronous confirmation of delivery or error
+ * 
+ */
+
 'use strict';
 
 var config = require('../config'),
     _ = require('lodash'),
     nodemailer = require('nodemailer'),
-    notificationQueue = require("../models/connectionMorpheus").model('notificationQueue'),
-    jwt = require('jsonwebtoken'),
-    request = require('request'),
-    http = require("http"),
-    https = require("https"),
     puretext = require('puretext');
 
 
@@ -22,7 +26,6 @@ var exports = module.exports = {
                     pass: config.email.nodemailer.auth.pass,
                 }
             };
-            console.log(configTransporter)
 
             var smtpTransport = nodemailer.createTransport(configTransporter);
 
@@ -33,7 +36,6 @@ var exports = module.exports = {
                 text: emailToSend.text,
                 html: emailToSend.html
             };
-            console.log(mailOptions);
 
             smtpTransport.sendMail(mailOptions, function(err) {
                 if (err) {
@@ -41,7 +43,7 @@ var exports = module.exports = {
                     reject(err);
                 } else {
                     smtpTransport.close();
-                    console.log("email sent")
+                    console.log("email sent");
                     resolve(emailToSend);
                 }
             });
