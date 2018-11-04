@@ -65,6 +65,10 @@ This way, the funcionality is keep modular and the code becomes clean and simple
 
 - __validator__: Some functionalities using some pre-existent js validations and adding extra ones necessaries in the project context. 
 
+### Postman tests folder
+
+Postman api calls available with the sample data used. 
+
 
 Possible improvements
 ---------------
