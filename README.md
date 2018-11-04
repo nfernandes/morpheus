@@ -1,6 +1,9 @@
 Morpheus - notification service, sending update emails
 =================================
 
+"Morpheus, the Greek God of Dreams who delivered messages from the gods to the mortal world"
+
+
 DEVELOPMENT ENVIRONMENT SETUP
 ----------------------------------------------
 
