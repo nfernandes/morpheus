@@ -129,7 +129,7 @@ Response Sample
 BODY:
 same has above
 
-**NO AUTHENTICATION HEADERS**
+**NO AUTHORIZATION HEADERS**
 
 Response Sample
 
@@ -243,7 +243,7 @@ Response Sample
 BODY:
 same has above
 
-**NO AUTHENTICATION HEADERS**
+**NO AUTHORIZATION HEADERS**
 
 Response Sample
 
