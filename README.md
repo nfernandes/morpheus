@@ -38,7 +38,6 @@ In this case i am allowing my dev config file to be public. In a real project th
 ### Controllers
 
 Contain the api functionalities for the routes defined. I added functionality to send emails/text message. However, i only activated send emails.
-you can see the function to send also sms. 
 
 ### Middleware
 
@@ -55,12 +54,13 @@ The api paths defined for the project.
 ### Utils
 
 Extra functionalities that we can use as helpers for the controllers and that can be use in several controllers. 
+This way, the funcionality is keep modular and the code becomes clean and simple.
 
-- reponse helper: Creating a standardized template for responses. To guarantee that it is always sent the same type of structure in the response. Allows easier collaboration with other systems. 
+- __reponse__: Creating a standardized template for responses. To guarantee that it is always sent the same type of structure in the response. Allows easier collaboration with other systems. 
 
-- sender helper: Email/SMS sender functionality based on nodemailer/puretext respectively. Nodemailer was selected because it is a reliable service easy to use and to set up. A gmail test account was setup to send the emails. Consequently, the from email used by default is the created gmail. However, if we would have a mailchimp or AWS SMTP or other the from email could be configurable. In the sending functionality, promised were use to keep synchronism in the response to a client system or the user directly. 
+- __sender__: Email/SMS sender functionality based on nodemailer/puretext respectively. Nodemailer was selected because it is a reliable service easy to use and to set up. A gmail test account was setup to send the emails. Consequently, the from email used by default is the created gmail. However, if we would have a mailchimp or AWS SMTP or other the from email could be configurable. In the sending functionality, promised were use to keep synchronism in the response to a client system or the user directly. 
 
-- validator: Some functionalities using some pre-existent js validations and adding extra ones necessaries in the project context. 
+- __validator__: Some functionalities using some pre-existent js validations and adding extra ones necessaries in the project context. 
 
 
 Possible improvements
