@@ -11,7 +11,10 @@ You need to have
 
 - NodeJS 
 
-- MongoDB 
+- MongoDB
+
+Mongo was selected to keep the data of the notifications sent. This allow to store data with more
+flexibility and variability. What can happen with the data stored in this case.
 
 
 SETUP
