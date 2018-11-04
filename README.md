@@ -55,10 +55,12 @@ The api paths defined for the project.
 ### Utils
 
 Extra functionalities that we can use as helpers for the controllers and that can be use in several controllers. 
-In this case, i am using a template for the responses, to guarantee that we send always the same type of structure in the response. Allows easier collaboration with other systems. 
-I am also using an email sender functionality based on nodemailer. I selected nodemailer because it is a reliable service easy to use and to set up.
 
-I setup an gmail test account to send the emails, consequently the from email is the one i setup.  However, if we would have a mailchimp or AWS SMTP or other the from email could be changed also. 
+- reponse helper: Creating a standardized template for responses. To guarantee that it is always sent the same type of structure in the response. Allows easier collaboration with other systems. 
+
+- sender helper: Email/SMS sender functionality based on nodemailer/puretext respectively. Nodemailer was selected because it is a reliable service easy to use and to set up. A gmail test account was setup to send the emails. Consequently, the from email used by default is the created gmail. However, if we would have a mailchimp or AWS SMTP or other the from email could be configurable. In the sending functionality, promised were use to keep synchronism in the response to a client system or the user directy. 
+
+- validator: Some functionalities using some pre-existent js validations and adding extra ones necessaies in the project context. 
 
 
 Possible improvements
