@@ -34,17 +34,22 @@ index.js that contains the server that will kick start the project, after we hav
 
 ### Configurations
 
-Environment configurations allowing to use specific variables depending on the project environment at the time.
-In AWS we would set up the correct node.process.env indicating which env file to use (i would have one for test, stage, prod).
-In this case i am allowing my dev config file to be public. In a real project the repository would be private or i would not commit the env files. 
+Environment configurations allowing to use specific variables, depending on the NODE environment.
+In AWS, we would set up the correct node.process.env indicating which env file to use (i would have one for test, 
+stage, prod).
+In this case, i am allowing development configuration file to be public. 
+In a real project, the repository would be private or not committed. 
 
 ### Controllers
 
-Contain the api functionalities for the routes defined. I added functionality to send emails/text message. However, i only activated send emails.
+Contain the api functionalities for the routes defined. Functionality to send emails/text message is available. 
+However, only send emails is activated.
 
 ### Middleware
 
-Middleware with authentication (checking if authentication is valid). In this case we can for instance use Json Web Token, because this updates could be use between systems so would be a secure and easy way to make authentication between systems.
+Middleware with authentication (checking if authentication is valid). In this case, I used Json Web Token (JWT).
+JWT can easily be used to perform authentication between systems, in a secure way and even allowing to pass 
+data in case of necessity. 
 
 ### Modules
 
@@ -56,14 +61,21 @@ The api paths defined for the project.
 
 ### Utils
 
-Extra functionalities that we can use as helpers for the controllers and that can be use in several controllers. 
-This way, the funcionality is keep modular and the code becomes clean and simple.
+Extra functionalities that we can use as helpers for the controllers and that can be used in all of them. 
+This way, the functionality is kept modular and the code becomes clean and simple.
 
-- __reponse__: Creating a standardized template for responses. To guarantee that it is always sent the same type of structure in the response. Allows easier collaboration with other systems. 
+- __reponse__: Creating a standardized template for responses. To guarantee that it is always sent the same 
+type of structure in the response. Allows easier collaboration with other systems. 
+Allowing to easily have several systems/microservices connected to each other, in AWS for example. 
 
-- __sender__: Email/SMS sender functionality based on nodemailer/puretext respectively. Nodemailer was selected because it is a reliable service easy to use and to set up. A gmail test account was setup to send the emails. Consequently, the from email used by default is the created gmail. However, if we would have a mailchimp or AWS SMTP or other the from email could be configurable. In the sending functionality, promised were use to keep synchronism in the response to a client system or the user directly. 
+- __sender__: Email/SMS sender functionality based on nodemailer/puretext respectively. Nodemailer was selected 
+because it is a reliable service easy to use and to set up. A Gmail test account was setup to send the emails. 
+Consequently, the from email used by default is the created gmail. However, if we would have a mailchimp or AWS 
+SMTP or other the from email could be configurable. In the sending functionality, promised were use to keep 
+synchronism in the response to a client system or the user directly. 
 
-- __validator__: Some functionalities using some pre-existent js validations and adding extra ones necessaries in the project context. 
+- __validator__: Some functionalities using some pre-existent js validations and adding extra ones necessaries in the 
+project context. 
 
 ### Postman tests folder
 
@@ -72,23 +84,28 @@ Postman api calls available with the sample data used.
 
 Possible improvements
 ---------------
-- possible to create email templates, those case be made using handelbars with placeholders to allow easy usage of them. this would make easier to send updates (standard messages)
+- possible to create email templates, those case be made using handelbars with placeholders to allow easy usage of 
+them. this would make easier to send updates (standard messages)
 
-- Using AWS Lambda to run every X amount of time (for instance 1 minute) to check if there is any email that was not processed in case of error for instance. and retry to send it. 
+- Using AWS Lambda to run every X amount of time (for instance 1 minute) to check if there is any email that was not 
+processed in case of error for instance. and retry to send it. 
+
+
 
 Sample of usage
 ----------------
 
-
 ### Create update message
 
-Design of request is using 'notifications', because can be use for emails or/and sms. I also used the version, because v1 is the original request and v2 will have an example of authentication.
+The design of the request was `/api/vX/notifications`. Using `notifications` it can be applied for SMS/emails, even for 
+example based on user preferences, or other conditions.  
+It was also used the version in the API design, v1 is the original request and v2 the same request but with authentication.
 
 #### 1. v1
 
 `POST http://localhost:3000/api/v1/notifications`
 
-BODY :
+BODY:
 
 ~~~~
 {
@@ -100,7 +117,7 @@ BODY :
 }
 ~~~~
 
-Response Sample
+Response Sample:
 
 ~~~~
 {
@@ -136,9 +153,13 @@ Response Sample
 `POST http://localhost:3000/api/v2/notifications`
 
 BODY:
+~~~~
 same has above
+~~~~
 
 **NO AUTHORIZATION HEADERS**
+
+Using the api that should have authentication without it. 
 
 Response Sample
 
@@ -167,8 +188,9 @@ Same response that we have for v1.
 
 ### Get emails sent to a person
 
-Design of request is using 'notifications' and 'to' in the query to obtain a specific user email, could also have done with name.
-I also used the version, because v1 is the original request and v2 will have an example of authentication.
+The design of the request was `/api/vX/notifications`. `to` should be added as a query parameter, to obtain the data of a specific user.
+In this case using the user email, could also have being done with name. 
+It was also used the version in the API design, v1 is the original request and v2 the same request but with authentication.
 
 #### 1. v1
 
@@ -250,9 +272,13 @@ Response Sample
 `GET http://localhost:3000/api/v2/notifications?to=emailto`
 
 BODY:
+~~~~
 same has above
+~~~~
 
 **NO AUTHORIZATION HEADERS**
+
+Using the api that should have authentication without it. 
 
 Response Sample
 
