@@ -58,9 +58,9 @@ Extra functionalities that we can use as helpers for the controllers and that ca
 
 - reponse helper: Creating a standardized template for responses. To guarantee that it is always sent the same type of structure in the response. Allows easier collaboration with other systems. 
 
-- sender helper: Email/SMS sender functionality based on nodemailer/puretext respectively. Nodemailer was selected because it is a reliable service easy to use and to set up. A gmail test account was setup to send the emails. Consequently, the from email used by default is the created gmail. However, if we would have a mailchimp or AWS SMTP or other the from email could be configurable. In the sending functionality, promised were use to keep synchronism in the response to a client system or the user directy. 
+- sender helper: Email/SMS sender functionality based on nodemailer/puretext respectively. Nodemailer was selected because it is a reliable service easy to use and to set up. A gmail test account was setup to send the emails. Consequently, the from email used by default is the created gmail. However, if we would have a mailchimp or AWS SMTP or other the from email could be configurable. In the sending functionality, promised were use to keep synchronism in the response to a client system or the user directly. 
 
-- validator: Some functionalities using some pre-existent js validations and adding extra ones necessaies in the project context. 
+- validator: Some functionalities using some pre-existent js validations and adding extra ones necessaries in the project context. 
 
 
 Possible improvements
