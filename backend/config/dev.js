@@ -20,9 +20,6 @@ module.exports = {
                 pass: "!testaccount2018!AB"
             }
         },
-        mailchimp: {
-            password: '!testaccount2018!AB'
-        },
         defaultFrom: "morpheusinterview@gmail.com",
 
     },
