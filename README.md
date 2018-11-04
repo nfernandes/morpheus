@@ -126,6 +126,35 @@ Response Sample
 
 `POST http://localhost:3000/api/v2/notifications`
 
+BODY:
+same has above
+
+**NO AUTHORIZATION HEADERS**
+
+Response Sample
+
+~~~~
+{
+    "status": 401,
+    "error": "Unauthenticated"
+}
+~~~~
+
+
+**WITH AUTHORIZATION HEADERS**
+
+Example header:
+JWT created with the secret in env file.
+
+~~~~
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU4MTg1NmM2NTc0MDYwNDQwNTAzMzQ3YyIsImlhdCI6MTU0MTMyNTEzMSwiZXhwIjoxNTQxNDExNTMyfQ.V5qhmq11rOZMXoa8G8j-z8VXUAhkUzVWSIYYrgEccn4
+~~~~
+
+
+Response Sample:
+~~~~
+Same response that we have for v1.
+~~~~
 
 ### Get emails sent to a person
 
@@ -210,3 +239,34 @@ Response Sample
 #### 2. v2
 
 `GET http://localhost:3000/api/v2/notifications?to=emailto`
+
+BODY:
+same has above
+
+**NO AUTHORIZATION HEADERS**
+
+Response Sample
+
+~~~~
+{
+    "status": 401,
+    "error": "Unauthenticated"
+}
+~~~~
+
+
+**WITH AUTHORIZATION HEADERS**
+
+Example header:
+JWT created with the secret in env file.
+
+~~~~
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU4MTg1NmM2NTc0MDYwNDQwNTAzMzQ3YyIsImlhdCI6MTU0MTMyNTEzMSwiZXhwIjoxNTQxNDExNTMyfQ.V5qhmq11rOZMXoa8G8j-z8VXUAhkUzVWSIYYrgEccn4
+~~~~
+
+
+Response Sample:
+~~~~
+Same response that we have for v1.
+~~~~
+
